@@ -6,9 +6,6 @@ spring:
     password: admin
     url: jdbc:mysql://localhost:3306/bd_shield?createDatabaseIfNotExist=true
     driver-class-name: com.mysql.cj.jdbc.Driver
-  security:
-    user:
-      name: dino
-      password: jurasico
-      roles:
-      - admin
+  jpa:
+    hibernate:
+      ddl-auto: update
