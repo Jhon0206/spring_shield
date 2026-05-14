@@ -22,15 +22,15 @@ public class SecurityConfig {
   SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
         .authorizeHttpRequests(
-            auth -> auth.requestMatchers("demo/public").permitAll() // Sin iniciar sesión
+            auth -> auth.requestMatchers("/demo/public").permitAll() // Sin iniciar sesión
                 // Sesión iniciada y autorización de ADMIN
-                .requestMatchers("demo/admin").hasAuthority("ADMIN")
+                .requestMatchers("/demo/admin").hasAuthority("ADMIN")
                 // Sesión iniciada y autorización de VENDOR
-                .requestMatchers("demo/vendor").hasAuthority("VENDOR")
+                .requestMatchers("/demo/vendor").hasAuthority("VENDOR")
                 // Sesión iniciada y autorización de ADMIN o VENDOR
-                .requestMatchers("demo/worker").hasAnyAuthority("ADMIN", "VENDOR")
+                .requestMatchers("/demo/worker").hasAnyAuthority("ADMIN", "VENDOR")
                 // Sesión iniciada y autorización de CLIENT
-                .requestMatchers("demo/client").hasAuthority("CLIENT")
+                .requestMatchers("/demo/client").hasAuthority("CLIENT")
                 // Solo basta tener sesión iniciada
                 .anyRequest().authenticated())
         .formLogin(Customizer.withDefaults());
